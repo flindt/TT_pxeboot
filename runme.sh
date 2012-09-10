@@ -15,3 +15,10 @@ else
 fi
 
 
+# Create temporary ssh key and push it to the server
+# You must enter the password for root once
+mkdir sshkey
+
+
+# Install nescessary packages
+
