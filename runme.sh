@@ -30,4 +30,6 @@ ssh-copy-id -i ~/.ssh/pxeboot.pub root@$1 > sshkey/log2.txt
 echo Copied public key to server
 
 # Install nescessary packages
+ssh root@$1 'apt-get install tftpd-hpa syslinux dhcp3-server'
+
 
