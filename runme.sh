@@ -17,8 +17,17 @@ fi
 
 # Create temporary ssh key and push it to the server
 # You must enter the password for root once
-mkdir sshkey
+if [ ! -d sshkey ]
+then
+	mkdir sshkey
+fi
 
+if [ ! -f ~/.ssh/pxeboot ]
+then
+	ssh-keygen -t rsa -N "" -q -f ~/.ssh/pxeboot > sshkey/log1.txt
+fi
+ssh-copy-id -i ~/.ssh/pxeboot.pub root@$1 > sshkey/log2.txt
+echo Copied public key to server
 
 # Install nescessary packages
 
