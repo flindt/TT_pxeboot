@@ -22,7 +22,7 @@ HowTo
 -----
 1. Get this code: `git clone https://github.com/flindt/TT_pxeboot`
 
-2. Run the script: `cd TT_pxerboot` followed by `./runme.sh`
+2. Run the script: `cd TT_pxeboot` followed by `./runme.sh`
 
 3. Follow what the script says
 
