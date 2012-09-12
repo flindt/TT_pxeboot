@@ -25,11 +25,21 @@ fi
 if [ ! -f ~/.ssh/pxeboot ]
 then
 	ssh-keygen -t rsa -N "" -q -f ~/.ssh/pxeboot > sshkey/log1.txt
+	echo "Created new key pair"
 fi
 ssh-copy-id -i ~/.ssh/pxeboot.pub root@$1 > sshkey/log2.txt
 echo Copied public key to server
 
 # Install nescessary packages
-ssh root@$1 'apt-get install tftpd-hpa syslinux dhcp3-server'
+echo "Install packages..."
+ssh -i ~/.ssh/pxeboot root@$1 'apt-get install tftpd-hpa syslinux dhcp3-server'
 
+
+# Setup network interface for the internal boot network - must be eth1
+echo "backup interfaces file"
+ssh -i ~/.ssh/pxeboot root@$1 'cp /etc/network/interfaces /etc/network/interfaces.old'
+
+
+
+ 
 
