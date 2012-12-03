@@ -39,11 +39,11 @@ ssh -i $KEYFILE root@$1 'apt-get install tftpd-hpa syslinux dhcp3-server'
 
 # Setup network interface for the internal boot network - must be eth1
 echo "backup interfaces file"
-ssh -i $KEYFILE root@$1 'cp /etc/network/interfaces /etc/network/interfaces.old'
+ssh -i $KEYFILE root@$1 'cp --backup=numbered /etc/network/interfaces /etc/network/interfaces.old'
 scp -i $KEYFILE interfaces root@$1:/etc/network/interfaces
 
 echo "backup dhcpd.conf file"
-ssh -i $KEYFILE root@$1 'cp /etc/dhcp/dhcpd.conf /etc/dhcp/dhcpd.conf.old'
+ssh -i $KEYFILE root@$1 'cp --backup=numbered /etc/dhcp/dhcpd.conf /etc/dhcp/dhcpd.conf.old'
 scp -i $KEYFILE dhcpd.conf root@192.168.122.64:/etc/dhcp/dhcpd.conf
 
 
